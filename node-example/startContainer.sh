@@ -1,0 +1,1 @@
+docker run --name node-test --mount type=bind,source=\docker-s\node-example,target=/app/src -p 3000:3000 node-example
