@@ -1,0 +1,24 @@
+services:
+  node:
+    build: ./node-example
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./node-example:/app/src
+    depends_on:
+      - mongo
+    networks:
+      - backend
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongo-data:/data/db
+    networks:
+      - backend
+    logging:
+      driver: none
+networks:
+  backend:
+    driver: bridge
